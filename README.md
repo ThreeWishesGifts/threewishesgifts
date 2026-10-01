@@ -23,6 +23,18 @@ Edit the `PRODUCTS` array in `assets/products.js` — each entry has `title`, `c
 
 Prices are pulled from the shop's Etsy listings (EUR); the live localized price and checkout always happens on Etsy.
 
+## After every deploy: bump the cache-busting version
+
+Hostinger's CDN (hCDN) caches `assets/styles.css`, `assets/script.js` and `assets/products.js` for 7 days at the edge, separately from your git deploy — pushing new CSS/JS will **not** show up live until the cached copy expires, unless the URL changes. Every `<link>`/`<script>` tag for those three files carries a `?v=` query string for this reason.
+
+Before pushing a change to any of those three files, bump the `?v=...` value (any new string works — a timestamp is easiest) on **every** reference in `index.html`, `about.html` and `shop.html`:
+
+```
+sed -i "s/?v=[0-9]*/?v=$(date +%Y%m%d%H%M)/g" index.html about.html shop.html
+```
+
+HTML pages themselves are not edge-cached, so changes to page content/markup go live on the next deploy without this step.
+
 ## Local preview
 
 Any static file server works, e.g.:
