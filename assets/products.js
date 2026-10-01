@@ -18,10 +18,45 @@ const PRODUCTS = [
   },
   {
     title: "Halloween Kids Party Invitation Bundle | 4 Editable Invites + 4 Printable Coloring Placemats",
-    category: "Celebrations & Invites",
+    category: "Halloween",
     price: 3.93, was: 7.87,
     img: "assets/products/halloween-party.jpg",
     url: "https://www.etsy.com/listing/4575741529/halloween-kids-party-invitation-bundle-4"
+  },
+  {
+    title: "Gothic Fun Halloween Party Pack for Adults, Editable Invitations, Murder Mystery Game Pack",
+    category: "Halloween",
+    price: 7.86, was: 15.72,
+    img: "assets/products/gothic-halloween-party-pack.jpg",
+    url: "https://www.etsy.com/listing/4581991245/gothic-fun-halloween-party-pack-for"
+  },
+  {
+    title: "Cute Halloween Party Bundle for Adults, Editable Invitations & Menu Cards, Party Games",
+    category: "Halloween",
+    price: 9.67, was: 19.35,
+    img: "assets/products/cute-halloween-party-bundle.jpg",
+    url: "https://www.etsy.com/listing/4584990719/cute-halloween-party-bundle-for-adults"
+  },
+  {
+    title: "Halloween Glam Girly Wall Art Set of 6, Coquette Witch Vibes, Home Decor Printables",
+    category: "Halloween",
+    price: 6.04, was: 12.09,
+    img: "assets/products/halloween-glam-wall-art.jpg",
+    url: "https://www.etsy.com/listing/4582679784/halloween-glam-girly-wall-art-set-of-6"
+  },
+  {
+    title: "Halloween Planner Bumper Bundle, 30 Day Template, Party Invites, Kids Colouring, Bonus Stickers",
+    category: "Halloween",
+    price: 7.86, was: 15.72,
+    img: "assets/products/halloween-bumper-bundle.jpg",
+    url: "https://www.etsy.com/listing/4578066312/halloween-planner-bumper-bundle-30-day"
+  },
+  {
+    title: "Halloween Countdown Planner, 30-Day Digital & Print Prep Guide, Costume Decor Candy Party PDF",
+    category: "Halloween",
+    price: 3.39, was: 6.78,
+    img: "assets/products/halloween-countdown-planner.jpg",
+    url: "https://www.etsy.com/listing/4572936173/halloween-countdown-planner-30-day"
   },
   {
     title: "Editable Bar Opening Flyer Template, Canva Gastrobar Poster",
@@ -183,6 +218,20 @@ const PRODUCTS = [
     price: 3.39, was: 6.78,
     img: "assets/products/budget-signal.jpg",
     url: "https://www.etsy.com/listing/4566595371/digital-budget-planner-debt-payoff"
+  },
+  {
+    title: "30 Day Puppy & Dog Training Guide, Hyperlinked Digital Planner for GoodNotes Notability",
+    category: "Lifestyle Guides",
+    price: 3.33, was: 6.66,
+    img: "assets/products/puppy-dog-training-guide.jpg",
+    url: "https://www.etsy.com/listing/4572947222/30-day-puppy-dog-training-guide-digital"
+  },
+  {
+    title: "Glow Up 30 Day Guide, Hyperlinked Digital Planner for iPad, Skincare Fitness Habit Tracker",
+    category: "Lifestyle Guides",
+    price: 3.33, was: 6.66,
+    img: "assets/products/glow-up-30-day-guide.jpg",
+    url: "https://www.etsy.com/listing/4572892007/glow-up-30-day-guide-hyperlinked-digital"
   }
 ];
 

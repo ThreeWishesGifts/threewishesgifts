@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Three Wishes Gifts &mdash; Digital Musts for Busy Lives</title>
 <meta name="description" content="Clean, beautifully designed digital planners, journals and invitation suites from a mum-and-daughter team. Shop budget planners, meal planners, study planners and celebration suites." />
-<meta name="theme-color" content="#fde8d4" />
-<link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
-<link rel="apple-touch-icon" href="assets/logo.jpg" />
+<meta name="theme-color" content="#f6f1e7" />
+<link rel="icon" type="image/jpeg" href="assets/favicon-64.jpg" />
+<link rel="apple-touch-icon" href="assets/favicon-180.jpg" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Three Wishes Gifts &mdash; Digital Musts for Busy Lives" />
 <meta property="og:description" content="Clean, beautifully designed digital planners, journals and invitation suites for real life." />
-<meta property="og:image" content="assets/logo.jpg" />
+<meta property="og:image" content="assets/logo-512.jpg" />
 <meta property="og:url" content="https://threewishesgifts.com" />
 <meta name="twitter:card" content="summary_large_image" />
 
@@ -25,7 +25,7 @@
 
 <header class="site-header">
   <div class="container nav-inner">
-    <a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Three Wishes Gifts logo" />Three Wishes Gifts</a>
+    <a class="brand" href="index.html"><img src="assets/logo-512.jpg" alt="Three Wishes Gifts logo" />Three Wishes Gifts</a>
     <nav class="nav-links">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">Our Story</a>
@@ -42,7 +42,7 @@
 <section class="hero">
   <div class="sky" data-stars="18" aria-hidden="true"></div>
   <div class="container hero-content">
-    <img class="logo-mark" src="assets/logo.jpg" alt="Three Wishes Gifts" />
+    <img class="logo-mark" src="assets/logo-512.jpg" alt="Three Wishes Gifts" />
     <span class="eyebrow">A Mum &amp; Daughter Studio</span>
     <h1>Digital musts for <em>busy lives</em>, and gifts for the moments that matter</h1>
     <p class="lede">Clean, beautifully designed planners, journals and invitation suites &mdash; made by us, for women who want to feel a little more on top of things and a lot more magical.</p>
@@ -60,6 +60,20 @@
     <span>✦ Budget Planners</span><span>✦ Meal Planners</span><span>✦ Celebrations &amp; Invites</span><span>✦ Study &amp; School Planners</span><span>✦ Journals</span><span>✦ Business Flyers</span>
   </div>
 </div>
+
+<section style="background:var(--cream-deep);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">🎃 New for October</span>
+      <h2>Halloween Favourites</h2>
+      <p>Party invites, countdown planners and glam decor &mdash; fresh in the shop for spooky season.</p>
+    </div>
+    <div class="product-grid" id="halloween-grid"></div>
+    <div class="center reveal" style="margin-top:48px;">
+      <a class="btn btn-outline" href="shop.html#Halloween">See All Halloween Designs</a>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="container">
@@ -109,11 +123,13 @@
       <h2>Something for every part of your week</h2>
     </div>
     <div class="cat-grid">
+      <a class="cat-tile reveal" href="shop.html#Halloween"><span class="cat-emoji">🎃</span><h3>Halloween</h3><span class="count">6 designs</span></a>
       <a class="cat-tile reveal" href="shop.html#Budget%20Planners"><span class="cat-emoji">💰</span><h3>Budget Planners</h3><span class="count">9 designs</span></a>
       <a class="cat-tile reveal" href="shop.html#Meal%20Planners"><span class="cat-emoji">🍽️</span><h3>Meal Planners</h3><span class="count">4 designs</span></a>
       <a class="cat-tile reveal" href="shop.html#Study%20%26%20School%20Planners"><span class="cat-emoji">📚</span><h3>Study &amp; School Planners</h3><span class="count">6 designs</span></a>
       <a class="cat-tile reveal" href="shop.html#Journals"><span class="cat-emoji">📓</span><h3>Journals</h3><span class="count">2 designs</span></a>
-      <a class="cat-tile reveal" href="shop.html#Celebrations%20%26%20Invites"><span class="cat-emoji">🎊</span><h3>Celebrations &amp; Invites</h3><span class="count">3 designs</span></a>
+      <a class="cat-tile reveal" href="shop.html#Lifestyle%20Guides"><span class="cat-emoji">🌿</span><h3>Lifestyle Guides</h3><span class="count">2 designs</span></a>
+      <a class="cat-tile reveal" href="shop.html#Celebrations%20%26%20Invites"><span class="cat-emoji">🎊</span><h3>Celebrations &amp; Invites</h3><span class="count">2 designs</span></a>
       <a class="cat-tile reveal" href="shop.html#Business%20%26%20Event%20Flyers"><span class="cat-emoji">🪧</span><h3>Business &amp; Event Flyers</h3><span class="count">2 designs</span></a>
     </div>
   </div>
@@ -153,7 +169,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <div class="footer-brand"><img src="assets/logo.jpg" alt="Three Wishes Gifts logo" />Three Wishes Gifts</div>
+        <div class="footer-brand"><img src="assets/logo-512.jpg" alt="Three Wishes Gifts logo" />Three Wishes Gifts</div>
         <p class="footer-note">Digital organisation, celebrations and gifts for busy lives &mdash; designed by a mum-and-daughter team in London.</p>
       </div>
       <div class="footer-col">
@@ -185,6 +201,8 @@
   document.getElementById("year").textContent = new Date().getFullYear();
   const featured = PRODUCTS.filter(p => p.category === "Meal Planners");
   document.getElementById("featured-grid").innerHTML = featured.map(twProductCardHTML).join("");
+  const halloween = PRODUCTS.filter(p => p.category === "Halloween").slice(0, 4);
+  document.getElementById("halloween-grid").innerHTML = halloween.map(twProductCardHTML).join("");
 </script>
 <script src="assets/script.js"></script>
 </body>

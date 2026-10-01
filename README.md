@@ -8,7 +8,7 @@ Static site for [threewishesgifts.com](https://threewishesgifts.com) — a mum-a
 | --- | --- |
 | `index.html` | Home — hero, category highlights, featured products, about preview |
 | `about.html` | Our Story — full About Us copy and illustrations |
-| `shop.html` | Shop — all 26 products with category filters, pricing and links to Etsy |
+| `shop.html` | Shop — all 33 products with category filters, pricing and links to Etsy |
 | `assets/styles.css` | Shared design system (colours, layout, components) |
 | `assets/script.js` | Shared behaviour — nav, scroll reveal, star fields |
 | `assets/products.js` | Product catalogue (title, price, image, Etsy link) rendered on Home + Shop |

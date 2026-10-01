@@ -1,18 +1,18 @@
 /* Three Wishes Gifts — shared styles
-   Tones sampled from the logo artwork. */
+   Tones sampled from the gold-foil letterpress logo artwork. */
 
 :root {
-  --cream: #fde8d4;
-  --cream-light: #fff8ef;
-  --cream-deep: #f7ddc4;
-  --coral: #dd6350;
-  --coral-soft: #e8896b;
-  --coral-pale: #f3ac97;
-  --ink: #b9543f;
-  --charcoal: #3a231d;
+  --cream: #f6f1e7;
+  --cream-light: #fffdf8;
+  --cream-deep: #ece1c9;
+  --coral: #b9975a;
+  --coral-soft: #d4bc8b;
+  --coral-pale: #e6d9bc;
+  --ink: #8c7038;
+  --charcoal: #3a3327;
   --white: #fffefb;
-  --shadow: 0 20px 45px -20px rgba(185, 84, 63, 0.35);
-  --shadow-soft: 0 10px 30px -12px rgba(185, 84, 63, 0.25);
+  --shadow: 0 20px 45px -20px rgba(140, 112, 56, 0.35);
+  --shadow-soft: 0 10px 30px -12px rgba(140, 112, 56, 0.25);
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
@@ -99,7 +99,7 @@ p { margin: 0; line-height: 1.7; }
   background: rgba(255, 248, 239, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 8px 30px -18px rgba(185, 84, 63, 0.4);
+  box-shadow: 0 8px 30px -18px rgba(140, 112, 56, 0.4);
   padding: 10px 0;
 }
 .nav-inner {
