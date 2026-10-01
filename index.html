@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/styles.css?v=202610011527" />
+<link rel="stylesheet" href="assets/styles.css?v=202610011532" />
 </head>
 <body>
 
@@ -196,7 +196,7 @@
   </div>
 </footer>
 
-<script src="assets/products.js?v=202610011527"></script>
+<script src="assets/products.js?v=202610011532"></script>
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
   const featured = PRODUCTS.filter(p => p.category === "Meal Planners");
@@ -204,6 +204,6 @@
   const halloween = PRODUCTS.filter(p => p.category === "Halloween").slice(0, 4);
   document.getElementById("halloween-grid").innerHTML = halloween.map(twProductCardHTML).join("");
 </script>
-<script src="assets/script.js?v=202610011527"></script>
+<script src="assets/script.js?v=202610011532"></script>
 </body>
 </html>
