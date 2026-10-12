@@ -4,7 +4,7 @@
 //
 // Reads (all optional, none are committed - see .gitignore):
 //   private/solve-content.html                  the debrief, as an HTML fragment
-//   private/rosalind-achebe-2026-bw.png         portrait, used wherever the fragment says {{PORTRAIT}}
+//   private/rosalind-*.(png|jpg|webp)           portrait, used wherever the fragment says {{PORTRAIT}}
 //
 // Anything in private/ never leaves this machine; only the encrypted result is deployed.
 
@@ -17,17 +17,23 @@ const password = (process.argv[2] || 'stepover26').trim().toLowerCase();
 const ITERATIONS = 250000;
 
 const contentPath = path.join(root, 'private', 'solve-content.html');
-const portraitPath = path.join(root, 'private', 'rosalind-achebe-2026-bw.png');
+const MIME = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' };
+const privateDir = path.join(root, 'private');
+const portraitFile = fs.existsSync(privateDir)
+  ? fs.readdirSync(privateDir).find((f) => /^rosalind.*\.(png|jpe?g|webp)$/i.test(f))
+  : null;
+const portraitPath = portraitFile ? path.join(privateDir, portraitFile) : null;
 
 let html = fs.existsSync(contentPath)
   ? fs.readFileSync(contentPath, 'utf8')
   : '<h2>The debrief is on its way</h2><p>The full debrief is being prepared. Please check back soon.</p>';
 
-if (fs.existsSync(portraitPath)) {
-  const uri = 'data:image/png;base64,' + fs.readFileSync(portraitPath).toString('base64');
+if (portraitPath) {
+  const mime = MIME[path.extname(portraitPath).toLowerCase()];
+  const uri = 'data:' + mime + ';base64,' + fs.readFileSync(portraitPath).toString('base64');
   html = html.split('{{PORTRAIT}}').join(uri);
 } else if (html.includes('{{PORTRAIT}}')) {
-  console.warn('Warning: {{PORTRAIT}} used but private/rosalind-achebe-2026-bw.png not found.');
+  console.warn('Warning: {{PORTRAIT}} used but no private/rosalind-*.(png|jpg|webp) portrait found.');
 }
 
 (async () => {

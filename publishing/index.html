@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Blackwater Ledger &mdash; Three Wishes Gifts</title>
-<meta name="description" content="Join the reader list for The Blackwater Ledger and new releases from Three Wishes Gifts." />
+<title>The Blackwater Ledger &middot; Find the Killer Series &middot; Three Wishes Gifts Publishing</title>
+<meta name="description" content="Free extras from The Blackwater Ledger, Book One of the Find the Killer Series. Join the Casebook for guest histories, Eleanor's letters and first news of the next case." />
 <meta name="theme-color" content="#fbf4e6" />
 <link rel="icon" type="image/jpeg" href="/assets/favicon-64.jpg" />
 <link rel="apple-touch-icon" href="/assets/favicon-180.jpg" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="The Blackwater Ledger" />
-<meta property="og:description" content="Join the reader list for The Blackwater Ledger and new releases." />
+<meta property="og:title" content="The Blackwater Ledger &middot; Find the Killer Series" />
+<meta property="og:description" content="Free extras from The Blackwater Ledger, Book One of the Find the Killer Series. Join the Casebook." />
 <meta property="og:image" content="https://threewishesgifts.com/assets/logo-512.jpg" />
 <meta property="og:url" content="https://threewishesgifts.com/publishing" />
 <meta name="twitter:card" content="summary" />
@@ -21,14 +21,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/styles.css?v=202610011532" />
 <style>
-  .signup-card { max-width: 560px; margin: 0 auto; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 44px 36px; text-align: center; }
-  .signup-card h2 { font-size: 1.5rem; margin-bottom: 10px; }
+  .pub-hero h1 { max-width: 16ch; margin-left: auto; margin-right: auto; }
+  .signup-card { max-width: 640px; margin: 0 auto; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 44px 36px; text-align: center; }
+  .signup-card h2 { font-size: 1.7rem; margin-bottom: 10px; }
   .signup-card p { color: var(--charcoal); opacity: .8; }
-  .signup-form { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-  .signup-form input[type="email"] { flex: 1 1 260px; padding: 15px 20px; border-radius: 999px; border: 1.5px solid var(--coral-pale); font: inherit; background: var(--cream-light); color: var(--charcoal); }
-  .signup-form input[type="email"]:focus { outline: none; border-color: var(--coral); }
+  .signup-form { margin-top: 26px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 12px; }
+  .signup-form input[type="text"], .signup-form input[type="email"] { padding: 15px 20px; border-radius: 999px; border: 1.5px solid var(--coral-pale); font: inherit; background: var(--cream-light); color: var(--charcoal); min-width: 0; }
+  .signup-form input:focus { outline: none; border-color: var(--coral); }
+  .signup-form .btn { grid-column: 1 / -1; justify-content: center; }
   .signup-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-  .signup-msg { margin-top: 18px; min-height: 1.4em; font-weight: 500; color: var(--ink); }
+  .signup-msg { margin-top: 16px; min-height: 1.4em; font-weight: 500; color: var(--ink); }
+  .fine { margin-top: 14px; font-size: .88rem; font-style: italic; }
+  .letter-card { max-width: 680px; margin: 0 auto; background: var(--white); border-left: 4px solid var(--coral); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); padding: 34px 38px; font-family: var(--serif); }
+  .letter-card p { margin-bottom: 14px; font-size: 1.04rem; }
+  .letter-card .dateline { font-style: italic; opacity: .75; font-size: .95rem; }
+  .letter-card .margin-note { margin-top: 20px; padding-top: 14px; border-top: 1px dashed var(--coral-pale); font-style: italic; color: var(--ink); margin-bottom: 0; }
+  .next-card { max-width: 640px; margin: 0 auto; text-align: center; background: linear-gradient(155deg, var(--cream) 0%, var(--cream-deep) 100%); border-radius: var(--radius-lg); padding: 44px 36px; box-shadow: var(--shadow-soft); }
+  .next-card h3 { font-size: 1.6rem; margin: 6px 0 12px; }
+  .author-copy { max-width: 720px; margin: 0 auto; }
+  .author-copy p { margin-bottom: 18px; color: var(--charcoal); opacity: .9; font-size: 1.05rem; }
+  .imprint { margin-top: 28px; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); font-weight: 600; }
+  @media (max-width: 560px) { .signup-form { grid-template-columns: 1fr; } .letter-card { padding: 26px 22px; } }
 </style>
 </head>
 <body>
@@ -48,26 +61,109 @@
   </div>
 </header>
 
-<section class="page-hero">
+<section class="page-hero pub-hero">
   <div class="sky" data-stars="14" aria-hidden="true"></div>
   <div class="container" style="position:relative;z-index:2;">
-    <span class="eyebrow">A Three Wishes Gifts publication</span>
-    <h1>The Blackwater Ledger</h1>
-    <p>Thank you for reading. Leave your email and we'll write to you when there's more to share.</p>
+    <span class="eyebrow">Find the Killer Series &middot; Book One</span>
+    <h1>The guest book stays open.</h1>
+    <p>Eleanor Voss kept sixty-five years of guests in one ledger, and every complaint they ever made in a shoebox under the desk. The book gives you the clues. This is where we keep the rest.</p>
   </div>
 </section>
 
-<section style="padding-top:60px;">
+<section style="padding-top:60px;" id="casebook">
   <div class="container">
     <div class="signup-card reveal">
-      <h2>Join the reader list</h2>
-      <p>News about this book and our next releases, straight to your inbox.</p>
+      <h2>Join the Casebook</h2>
+      <p>Free extras from the Blackwater, and first word when the next case opens.</p>
       <form class="signup-form" id="signup-form" novalidate>
-        <input type="email" name="email" placeholder="Your email address" autocomplete="email" required aria-label="Email address" />
+        <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name" />
+        <input type="email" name="email" placeholder="Email" autocomplete="email" required aria-label="Email address" />
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button class="btn btn-primary" type="submit">Sign me up</button>
+        <button class="btn btn-primary" type="submit">Open the Casebook</button>
       </form>
       <div class="signup-msg" id="signup-msg" role="status" aria-live="polite"></div>
+      <p class="fine">No spoilers here. Your email is used only for Three Wishes Gifts Publishing book news. Unsubscribe at any time.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Inside the Casebook</span>
+      <h2>What's in the Casebook</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <h3>The guest cards</h3>
+        <p>Fuller histories of the featured guests, a few at a time. Who they were, and why they stopped coming back.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3>Eleanor's shoebox</h3>
+        <p>The complaint letters, one by one, with Eleanor's notes in the margin.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3>First look</h3>
+        <p>Early news, the cover and the opening chapter of the next case, before it goes on sale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">From the shoebox</span>
+      <h2>A complaint, filed</h2>
+    </div>
+    <article class="letter-card reveal">
+      <p class="dateline">The Blackwater Inn, August 1986</p>
+      <p>Dear Mrs Voss,</p>
+      <p>I write, as I have written every August for fifteen years, to put three matters before you.</p>
+      <p>First, breakfast. Eight o'clock is not early. The pike rise at six, and by eight they have risen, eaten and gone home.</p>
+      <p>Second, boat number three. It leaks. I have told your boatman. Your boatman has told me it doesn't. One of us is wet to the knee every morning, and it is not your boatman.</p>
+      <p>Third, the fish. Forty-one pounds, taken on Tuesday off the north shallows: the largest pike ever landed on this lake, as your own scales will tell you. I offered it to the bar, mounted at my own expense. I understand you have declined.</p>
+      <p>I shall, of course, be back next year.</p>
+      <p>Yours, as ever,<br />B. Quayle (Room 138)</p>
+      <p class="margin-note">In the margin, in Eleanor's hand: &ldquo;Filed.&rdquo;</p>
+    </article>
+  </div>
+</section>
+
+<section style="background:var(--cream);">
+  <div class="container">
+    <div class="next-card reveal">
+      <span class="eyebrow">Next in the series</span>
+      <h3>Cold Case: Christmas</h3>
+      <p>Five unsolved festive murders. 80 clues. One killer connecting them all.</p>
+      <p style="margin-top:12px;">Join the Casebook to hear first when it opens.</p>
+      <a class="btn btn-primary" style="margin-top:22px;" href="#casebook">Join the Casebook</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Solved the case?</span>
+      <h2>Already solved it?</h2>
+      <p>Email your answer to <a href="mailto:solve@threewishesgifts.com?subject=BLACKWATER" style="color:var(--ink);font-weight:600;text-decoration:underline;">solve@threewishesgifts.com</a> with the subject <strong>BLACKWATER</strong>. If you're right, the reply unlocks the full case debrief.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">About the author</span>
+      <h2>J.M. Ashcombe</h2>
+    </div>
+    <div class="author-copy reveal">
+      <p>J.M. Ashcombe has been reading detective novels since childhood, beginning with a borrowed Agatha Christie and never really stopping. The appeal has always been the same: a closed circle of suspects, a fair set of clues, and the moment the last piece falls into place.</p>
+      <p>That interest grew into a long habit of following real cold cases, the ones reopened decades later because someone finally looked again at an old register, a letter or a photograph. Ashcombe's books borrow that idea. Every case begins with a record, a victim and a list of names, and the reader does the detective work.</p>
+      <p>The Blackwater Ledger is Book 1 in the Find the Killer series. Each title is a complete case with one fair answer, and new cases are on the way.</p>
+      <p>Join the case files at threewishesgifts.com/publishing, for character histories, new cases and early news of the next book.</p>
+      <p class="imprint">Three Wishes Gifts Publishing &middot; ISBN 979-8-178650-39-4</p>
     </div>
   </div>
 </section>
@@ -75,8 +171,8 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
+      <span>Three Wishes Gifts Publishing &middot; <a href="mailto:hello@threewishesgifts.com">hello@threewishesgifts.com</a></span>
       <span>&copy; <span id="year"></span> Three Wishes Gifts. All rights reserved.</span>
-      <span>Made with ✨ in London</span>
     </div>
   </div>
 </footer>
@@ -97,15 +193,20 @@
       return;
     }
     if (!SIGNUP_ENDPOINT) {
-      msg.textContent = "Sign-ups open very soon. Please check back shortly.";
+      msg.textContent = "The Casebook opens very soon. Please check back shortly.";
       return;
     }
-    var body = new URLSearchParams({ email: email, website: form.elements.website.value, source: "publishing" });
+    var body = new URLSearchParams({
+      email: email,
+      name: form.elements.name.value.trim(),
+      website: form.elements.website.value,
+      source: "publishing"
+    });
     msg.textContent = "Sending...";
     fetch(SIGNUP_ENDPOINT, { method: "POST", mode: "no-cors", body: body })
       .then(function () {
         form.reset();
-        msg.textContent = "Thank you. You're on the list.";
+        msg.textContent = "Welcome to the Casebook. We'll be in touch.";
       })
       .catch(function () {
         msg.textContent = "Something went wrong. Please try again in a moment.";

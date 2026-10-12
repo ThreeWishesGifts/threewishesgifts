@@ -27,7 +27,7 @@ Static site for [threewishesgifts.com](https://threewishesgifts.com) — a mum-a
 
 **Sign-ups:** set `SIGNUP_ENDPOINT` in `publishing/index.html` to the Apps Script web app URL (ends in `/exec`). Until it is set, the form tells visitors sign-ups open soon.
 
-**Debrief:** put the HTML fragment in `private/solve-content.html` (use `{{PORTRAIT}}` as an image `src` for the portrait, and save the portrait as `private/rosalind-achebe-2026-bw.png`). Then run `node tools/build-solve.js` and commit `solve/index.html`. The `private/` folder is gitignored and never deployed. Use `node tools/build-solve.js <new password>` for the next book; the password is not stored anywhere in the page.
+**Debrief:** put the HTML fragment in `private/solve-content.html` (use `{{PORTRAIT}}` as an image `src` for the portrait, and save the portrait as `private/rosalind-*.png`, `.jpg` or `.webp`). Then run `node tools/build-solve.js` and commit `solve/index.html`. The `private/` folder is gitignored and never deployed. Use `node tools/build-solve.js <new password>` for the next book; the password is not stored anywhere in the page.
 
 `/solve` is marked `noindex` and is not linked from the site or `robots.txt`. The password gate keeps the debrief from casual readers; it is a spoiler gate, not security-grade protection.
 
