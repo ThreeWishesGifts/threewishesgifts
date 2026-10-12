@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Blackwater Ledger &mdash; Three Wishes Gifts</title>
+<meta name="description" content="Join the reader list for The Blackwater Ledger and new releases from Three Wishes Gifts." />
+<meta name="theme-color" content="#fbf4e6" />
+<link rel="icon" type="image/jpeg" href="/assets/favicon-64.jpg" />
+<link rel="apple-touch-icon" href="/assets/favicon-180.jpg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Blackwater Ledger" />
+<meta property="og:description" content="Join the reader list for The Blackwater Ledger and new releases." />
+<meta property="og:image" content="https://threewishesgifts.com/assets/logo-512.jpg" />
+<meta property="og:url" content="https://threewishesgifts.com/publishing" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/styles.css?v=202610011532" />
+<style>
+  .signup-card { max-width: 560px; margin: 0 auto; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 44px 36px; text-align: center; }
+  .signup-card h2 { font-size: 1.5rem; margin-bottom: 10px; }
+  .signup-card p { color: var(--charcoal); opacity: .8; }
+  .signup-form { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .signup-form input[type="email"] { flex: 1 1 260px; padding: 15px 20px; border-radius: 999px; border: 1.5px solid var(--coral-pale); font: inherit; background: var(--cream-light); color: var(--charcoal); }
+  .signup-form input[type="email"]:focus { outline: none; border-color: var(--coral); }
+  .signup-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .signup-msg { margin-top: 18px; min-height: 1.4em; font-weight: 500; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="brand" href="/"><img src="/assets/logo-512.jpg" alt="Three Wishes Gifts logo" />Three Wishes Gifts</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about.html">Our Story</a>
+      <a href="/shop.html">Shop</a>
+      <a href="https://www.etsy.com/shop/ThreeWishesGiftsShop" target="_blank" rel="noopener">Etsy Shop ↗</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="sky" data-stars="14" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="eyebrow">A Three Wishes Gifts publication</span>
+    <h1>The Blackwater Ledger</h1>
+    <p>Thank you for reading. Leave your email and we'll write to you when there's more to share.</p>
+  </div>
+</section>
+
+<section style="padding-top:60px;">
+  <div class="container">
+    <div class="signup-card reveal">
+      <h2>Join the reader list</h2>
+      <p>News about this book and our next releases, straight to your inbox.</p>
+      <form class="signup-form" id="signup-form" novalidate>
+        <input type="email" name="email" placeholder="Your email address" autocomplete="email" required aria-label="Email address" />
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn btn-primary" type="submit">Sign me up</button>
+      </form>
+      <div class="signup-msg" id="signup-msg" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Three Wishes Gifts. All rights reserved.</span>
+      <span>Made with ✨ in London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Paste the Google Apps Script web app URL (ends in /exec) between the quotes.
+  var SIGNUP_ENDPOINT = "";
+
+  var form = document.getElementById("signup-form");
+  var msg = document.getElementById("signup-msg");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = form.elements.email.value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.textContent = "Please enter a valid email address.";
+      return;
+    }
+    if (!SIGNUP_ENDPOINT) {
+      msg.textContent = "Sign-ups open very soon. Please check back shortly.";
+      return;
+    }
+    var body = new URLSearchParams({ email: email, website: form.elements.website.value, source: "publishing" });
+    msg.textContent = "Sending...";
+    fetch(SIGNUP_ENDPOINT, { method: "POST", mode: "no-cors", body: body })
+      .then(function () {
+        form.reset();
+        msg.textContent = "Thank you. You're on the list.";
+      })
+      .catch(function () {
+        msg.textContent = "Something went wrong. Please try again in a moment.";
+      });
+  });
+</script>
+<script src="/assets/script.js?v=202610011532"></script>
+</body>
+</html>

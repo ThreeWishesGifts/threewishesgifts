@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Blackwater Ledger &mdash; Debrief</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<meta name="theme-color" content="#fbf4e6" />
+<link rel="icon" type="image/jpeg" href="/assets/favicon-64.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/styles.css?v=202610011532" />
+<style>
+  .gate { max-width: 460px; margin: 0 auto; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 44px 36px; text-align: center; }
+  .gate h2 { font-size: 1.4rem; margin-bottom: 10px; }
+  .gate p { color: var(--charcoal); opacity: .8; }
+  .gate form { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .gate input { flex: 1 1 200px; padding: 15px 20px; border-radius: 999px; border: 1.5px solid var(--coral-pale); font: inherit; background: var(--cream-light); color: var(--charcoal); }
+  .gate input:focus { outline: none; border-color: var(--coral); }
+  .gate-msg { margin-top: 16px; min-height: 1.4em; color: var(--ink); font-weight: 500; }
+  #debrief { display: none; }
+  #debrief .story-copy img { border-radius: var(--radius-lg); box-shadow: var(--shadow); margin: 32px auto; max-width: 100%; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="brand" href="/"><img src="/assets/logo-512.jpg" alt="Three Wishes Gifts logo" />Three Wishes Gifts</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="sky" data-stars="12" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="eyebrow">The Blackwater Ledger</span>
+    <h1>The Debrief</h1>
+  </div>
+</section>
+
+<section style="padding-top:60px;">
+  <div class="container">
+    <div class="gate" id="gate">
+      <h2>Enter your password</h2>
+      <p>You'll find it in the reply to your correct answer.</p>
+      <form id="gate-form" novalidate>
+        <input type="password" id="pw" placeholder="Password" autocomplete="off" autocapitalize="off" aria-label="Password" required />
+        <button class="btn btn-primary" type="submit">Unlock</button>
+      </form>
+      <div class="gate-msg" id="gate-msg" role="status" aria-live="polite"></div>
+    </div>
+    <div id="debrief"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Three Wishes Gifts. All rights reserved.</span>
+      <span>Made with ✨ in London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Encrypted debrief (AES-GCM, key from PBKDF2-SHA256). Built by tools/build-solve.js.
+  var PAYLOAD = {"s":"4jNllxv5oPurnjVioKiQkA==","v":"1qB3ePNancOCYIYH","c":"SEv4qc72SjmnKPIrr9XEOOKM3UQXM9MdRH4HQVWSYZUNYDzRGYb6MeseIsgK3EIp7kwBOr/5NH7wT6yHif41NDyTROPLz9garpZoKMWRV3MDHfmXX9+qOnUlfcP14PFyl2OAn1WG/skSOF75L87+OWmD3r0=","i":250000};
+
+  function b64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
+
+  async function unlock(password) {
+    var km = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
+    var key = await crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: b64(PAYLOAD.s), iterations: PAYLOAD.i, hash: "SHA-256" },
+      km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    var pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(PAYLOAD.v) }, key, b64(PAYLOAD.c));
+    return new TextDecoder().decode(pt);
+  }
+
+  document.getElementById("gate-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var msg = document.getElementById("gate-msg");
+    var pw = document.getElementById("pw").value.trim().toLowerCase();
+    if (!pw) { msg.textContent = "Please enter the password."; return; }
+    msg.textContent = "Checking...";
+    try {
+      var html = await unlock(pw);
+      var out = document.getElementById("debrief");
+      out.innerHTML = '<div class="story-copy">' + html + "</div>";
+      document.getElementById("gate").style.display = "none";
+      out.style.display = "block";
+      window.scrollTo(0, 0);
+    } catch (err) {
+      msg.textContent = "That password isn't right. Check the reply you were sent and try again.";
+    }
+  });
+</script>
+</body>
+</html>

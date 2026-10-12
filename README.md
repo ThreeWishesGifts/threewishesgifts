@@ -17,6 +17,20 @@ Static site for [threewishesgifts.com](https://threewishesgifts.com) — a mum-a
 | `assets/products/` | Product imagery (Etsy listing photos + custom mockups) |
 | `robots.txt` | Allows indexing |
 
+## The Blackwater Ledger pages
+
+| Path | Purpose |
+| --- | --- |
+| `publishing/index.html` | Public `/publishing`: spoiler-free email sign-up (QR code in the book points here) |
+| `solve/index.html` | `/solve`: password-gated debrief. **Generated**, don't edit by hand |
+| `tools/build-solve.js`, `tools/solve.template.html` | Builds `solve/index.html` with the debrief encrypted inside it |
+
+**Sign-ups:** set `SIGNUP_ENDPOINT` in `publishing/index.html` to the Apps Script web app URL (ends in `/exec`). Until it is set, the form tells visitors sign-ups open soon.
+
+**Debrief:** put the HTML fragment in `private/solve-content.html` (use `{{PORTRAIT}}` as an image `src` for the portrait, and save the portrait as `private/rosalind-achebe-2026-bw.png`). Then run `node tools/build-solve.js` and commit `solve/index.html`. The `private/` folder is gitignored and never deployed. Use `node tools/build-solve.js <new password>` for the next book; the password is not stored anywhere in the page.
+
+`/solve` is marked `noindex` and is not linked from the site or `robots.txt`. The password gate keeps the debrief from casual readers; it is a spoiler gate, not security-grade protection.
+
 ## Updating products
 
 Edit the `PRODUCTS` array in `assets/products.js` — each entry has `title`, `category`, `price`, `was` (original price), `img`, and `url` (the Etsy listing link). Both the Home page's featured grid and the Shop page's full grid render from this one file.
