@@ -17,19 +17,21 @@ Static site for [threewishesgifts.com](https://threewishesgifts.com) — a mum-a
 | `assets/products/` | Product imagery (Etsy listing photos + custom mockups) |
 | `robots.txt` | Allows indexing |
 
-## The Blackwater Ledger pages
+## Find the Killer series pages
 
 | Path | Purpose |
 | --- | --- |
-| `publishing/index.html` | Public `/publishing`: spoiler-free email sign-up (QR code in the book points here) |
-| `solve/index.html` | `/solve`: password-gated debrief. **Generated**, don't edit by hand |
-| `tools/build-solve.js`, `tools/solve.template.html` | Builds `solve/index.html` with the debrief encrypted inside it |
+| `publishing/index.html` | Public `/publishing`: spoiler-free Casebook sign-up plus a section per book (QR codes in the books point here) |
+| `solve-blackwater/index.html` | Password-gated debrief for The Blackwater Ledger. **Generated** |
+| `solve-coldcase/index.html` | Password-gated debrief for Cold Case: Christmas. **Generated** |
+| `solve/index.html` | Old address, redirects to `/solve-blackwater` |
+| `tools/build-solve.js`, `tools/solve.template.html` | Builds the debrief pages with the content encrypted inside them |
 
 **Sign-ups:** set `SIGNUP_ENDPOINT` in `publishing/index.html` to the Apps Script web app URL (ends in `/exec`). Until it is set, the form tells visitors sign-ups open soon.
 
-**Debrief:** put the HTML fragment in `private/solve-content.html` (use `{{PORTRAIT}}` as an image `src` for the portrait, and save the portrait as `private/rosalind-*.png`, `.jpg` or `.webp`). Then run `node tools/build-solve.js` and commit `solve/index.html`. The `private/` folder is gitignored and never deployed. Use `node tools/build-solve.js <new password>` for the next book; the password is not stored anywhere in the page.
+**Debriefs:** each book has a folder `private/<book>/` (gitignored, never deployed) holding `solve-content.html` (an HTML fragment) and the portrait (`.png`, `.jpg` or `.webp`, used where the fragment has `{{PORTRAIT}}`). Run `node tools/build-solve.js` (all books) or `node tools/build-solve.js coldcase`, then commit the generated `solve-*/index.html`. Passwords live in the `BOOKS` table at the top of `tools/build-solve.js`; they are not stored in the pages. To add a book, add an entry there, a `private/<book>/` folder and a row in the Google Sheet's Books tab.
 
-`/solve` is marked `noindex` and is not linked from the site or `robots.txt`. The password gate keeps the debrief from casual readers; it is a spoiler gate, not security-grade protection.
+The debrief pages are `noindex` and are not linked from the site or `robots.txt`. The password gate keeps the debrief from casual readers; it is a spoiler gate, not security-grade protection.
 
 ## Updating products
 
