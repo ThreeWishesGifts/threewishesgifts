@@ -188,10 +188,9 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Paste each Google Apps Script web app URL (ends in /exec) between the quotes.
-  // One sheet per book: Blackwater (top form) and Cold Case (Book Two section).
+  // Paste the Google Apps Script web app URL (ends in /exec) between the quotes.
+  // One sheet for the whole series: the Source column says which book each reader joined for.
   var SIGNUP_ENDPOINT = "";
-  var COLDCASE_ENDPOINT = "";
 
   function wireSignup(formId, msgId, getEndpoint, source, done) {
     var form = document.getElementById(formId);
@@ -227,7 +226,7 @@
   }
 
   wireSignup("signup-form", "signup-msg", function () { return SIGNUP_ENDPOINT; }, "publishing-blackwater", "Welcome to the Casebook. We'll be in touch.");
-  wireSignup("signup-form-cc", "signup-msg-cc", function () { return COLDCASE_ENDPOINT; }, "publishing-coldcase", "You're on the Cold Case file. We'll be in touch.");
+  wireSignup("signup-form-cc", "signup-msg-cc", function () { return SIGNUP_ENDPOINT; }, "publishing-coldcase", "You're on the Cold Case file. We'll be in touch.");
 </script>
 <script src="/assets/script.js?v=202610011532"></script>
 </body>
