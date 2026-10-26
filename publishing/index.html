@@ -149,7 +149,13 @@
       <p><strong>Five unsolved festive murders. 80 clues. One killer connecting them all.</strong></p>
       <p style="margin-top:12px;">A detective's archive box, five files tied with ribbon, and a list in the hand of the woman who died gathering them. Join the Casebook for Beatrice's notes on the Christmas customs of the Wendle Valley and fuller histories of all fifteen persons of interest.</p>
       <p style="margin-top:12px;"><strong>Already solved it?</strong> Email the killer's real name to <a href="mailto:solve@threewishesgifts.com?subject=COLDCASE" style="color:var(--ink);font-weight:600;text-decoration:underline;">solve@threewishesgifts.com</a> with the subject <strong>COLDCASE</strong>. If you're right, the reply unlocks the full case debrief.</p>
-      <a class="btn btn-primary" style="margin-top:22px;" href="#casebook">Join the Casebook</a>
+      <form class="signup-form" id="signup-form-cc" novalidate>
+        <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name" />
+        <input type="email" name="email" placeholder="Email" autocomplete="email" required aria-label="Email address" />
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn btn-primary" type="submit">Join the Cold Case file</button>
+      </form>
+      <div class="signup-msg" id="signup-msg-cc" role="status" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -182,38 +188,46 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Paste the Google Apps Script web app URL (ends in /exec) between the quotes.
+  // Paste each Google Apps Script web app URL (ends in /exec) between the quotes.
+  // One sheet per book: Blackwater (top form) and Cold Case (Book Two section).
   var SIGNUP_ENDPOINT = "";
+  var COLDCASE_ENDPOINT = "";
 
-  var form = document.getElementById("signup-form");
-  var msg = document.getElementById("signup-msg");
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var email = form.elements.email.value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      msg.textContent = "Please enter a valid email address.";
-      return;
-    }
-    if (!SIGNUP_ENDPOINT) {
-      msg.textContent = "The Casebook opens very soon. Please check back shortly.";
-      return;
-    }
-    var body = new URLSearchParams({
-      email: email,
-      name: form.elements.name.value.trim(),
-      website: form.elements.website.value,
-      source: "publishing"
-    });
-    msg.textContent = "Sending...";
-    fetch(SIGNUP_ENDPOINT, { method: "POST", mode: "no-cors", body: body })
-      .then(function () {
-        form.reset();
-        msg.textContent = "Welcome to the Casebook. We'll be in touch.";
-      })
-      .catch(function () {
-        msg.textContent = "Something went wrong. Please try again in a moment.";
+  function wireSignup(formId, msgId, getEndpoint, source, done) {
+    var form = document.getElementById(formId);
+    var msg = document.getElementById(msgId);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = form.elements.email.value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        msg.textContent = "Please enter a valid email address.";
+        return;
+      }
+      var endpoint = getEndpoint();
+      if (!endpoint) {
+        msg.textContent = "The Casebook opens very soon. Please check back shortly.";
+        return;
+      }
+      var body = new URLSearchParams({
+        email: email,
+        name: form.elements.name.value.trim(),
+        website: form.elements.website.value,
+        source: source
       });
-  });
+      msg.textContent = "Sending...";
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: body })
+        .then(function () {
+          form.reset();
+          msg.textContent = done;
+        })
+        .catch(function () {
+          msg.textContent = "Something went wrong. Please try again in a moment.";
+        });
+    });
+  }
+
+  wireSignup("signup-form", "signup-msg", function () { return SIGNUP_ENDPOINT; }, "publishing-blackwater", "Welcome to the Casebook. We'll be in touch.");
+  wireSignup("signup-form-cc", "signup-msg-cc", function () { return COLDCASE_ENDPOINT; }, "publishing-coldcase", "You're on the Cold Case file. We'll be in touch.");
 </script>
 <script src="/assets/script.js?v=202610011532"></script>
 </body>

@@ -27,7 +27,7 @@ Static site for [threewishesgifts.com](https://threewishesgifts.com) — a mum-a
 | `solve/index.html` | Old address, redirects to `/solve-blackwater` |
 | `tools/build-solve.js`, `tools/solve.template.html` | Builds the debrief pages with the content encrypted inside them |
 
-**Sign-ups:** set `SIGNUP_ENDPOINT` in `publishing/index.html` to the Apps Script web app URL (ends in `/exec`). Until it is set, the form tells visitors sign-ups open soon.
+**Sign-ups:** one Google Sheet and Apps Script web app per book. Set `SIGNUP_ENDPOINT` (Blackwater, the form at the top) and `COLDCASE_ENDPOINT` (Cold Case, the form in the Book Two section) in `publishing/index.html` to each web app URL (ends in `/exec`). Until an endpoint is set, its form tells visitors sign-ups open soon.
 
 **Debriefs:** each book has a folder `private/<book>/` (gitignored, never deployed) holding `solve-content.html` (an HTML fragment) and the portrait (`.png`, `.jpg` or `.webp`, used where the fragment has `{{PORTRAIT}}`). Run `node tools/build-solve.js` (all books) or `node tools/build-solve.js coldcase`, then commit the generated `solve-*/index.html`. Passwords live in the `BOOKS` table at the top of `tools/build-solve.js`; they are not stored in the pages. To add a book, add an entry there, a `private/<book>/` folder and a row in the Google Sheet's Books tab.
 
